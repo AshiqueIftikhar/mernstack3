@@ -4,8 +4,7 @@ function multiplicationTable(num)
     for(var i =1; i<=10; i++)
     {
       //num x iteration = product
-      console.log(`${num} X ${i} = ${(parseInt(num)*i)}`);
-      
+      console.log(`${num} X ${i} = ${(parseInt(num)*i)}`);  
     }
 }
 
