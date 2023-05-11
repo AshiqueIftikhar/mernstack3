@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+
+    <style>
+        body{
+            font-family: 'Roboto', sans-serif;
+        }
+        #bmi{
+            border: 1px solid coral;
+            width:300px;
+            height:120px;
+            margin: 200px auto;
+            padding: 50px;
+            border-radius: 10px;
+        }
+        #calculateBtn{
+            width:150px;
+            height: 30px;
+            background-color: darkorange;
+            border-radius: 10px;
+        }
+        input{
+            height:20px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+    <form action="#">
+    <div id="bmi">
+        <input type="text" id="weightInput"><label> kg (Kilogram)</label></br></br>
+        <input type="text" id="heightInput"><label> m (meter)</label></br></br>
+        <button id="calculateBtn" onclick="calculateBMI()">Calculate</button>
+        <h3 id="result"></h3>
+    </div>
+    </form>
+    <script>
+
+        function calculateBMI()
+        {
+            var weight = parseFloat(document.getElementById("weightInput").value);
+            var height = parseFloat(document.getElementById("heightInput").value);
+            
+            var bmi = weight/(height*height);
+            if(bmi.toString() == "NaN")
+            {
+                document.getElementById("result").innerHTML = "Please enter weight and height."
+            }
+            else
+            {
+                document.getElementById("result").innerHTML ="Your BMI is: " + Math.round(bmi);
+            }
+      
+        }
+        
+
+    </script>
+</body>
+</html>
