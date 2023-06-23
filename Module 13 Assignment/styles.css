@@ -1,0 +1,18 @@
+/* Light mode styles */
+:root {
+    --background-color: #f8f9fa;
+    --text-color: #333333;
+  }
+  
+  /* Dark mode styles */
+  [data-theme="dark"] {
+    --background-color: #333333;
+    --text-color: #f8f9fa;
+  }
+  
+  body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
+
+  
