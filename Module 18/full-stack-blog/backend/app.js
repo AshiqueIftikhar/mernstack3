@@ -28,12 +28,24 @@ const limiter= rateLimit({windowMs:15*60*1000,max:3000})
 app.use(limiter)
 
 //Database Integration
-const URI ="mongodb+srv://<username>:<password>@cluster0.9pvozuw.mongodb.net/module-18-db?retryWrites=true&w=majority";
-const OPTION = {user:'ifty', pass:'ifty123'};
+ const URI ="mongodb+srv://<username>:<password>@cluster0.9pvozuw.mongodb.net/module-18-db?retryWrites=true&w=majority";
+const OPTION = {user:'ifty', pass:'ifty123',
+useNewUrlParser: true,
+useUnifiedTopology: true};
 mongoose.connect(URI, OPTION).then(error=>{
-    console.log("connected to database.")
-   console.log(error);
+//     console.log("connected to database.")
+//    console.log(error);
 })
+
+//connect to db
+// mongoose.connect(process.env.DATABASE_URL, {
+//     useNewUrlParser: true,
+//     useCreateIndex: true,
+//     useUnifiedTopology: true,
+// }).then(() => {
+//     console.log("Connected To DB");
+// })
+
 
 app.use("/api/v1", router);
 

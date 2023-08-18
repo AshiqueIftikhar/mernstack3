@@ -7,10 +7,10 @@ import {useNavigate,useParams} from "react-router-dom";
 function CreateUpdatePost() {
 
 let {id} = useParams();
-    let [FormValue,SetFormValue] = useState({Img:"",ProductCode:"",ProductName:"",Qty:"",TotalPrice:"",UnitPrice:""});
+    let [FormValue,SetFormValue] = useState({title:"",content:"",author:""});
     let navigate = useNavigate();
 
-   let [isProduct,setIsProduct]=useState(false);
+    let [isProduct,setIsProduct]=useState(false);
 
     useEffect(()=>{
 

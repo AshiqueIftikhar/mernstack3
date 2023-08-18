@@ -1,5 +1,9 @@
 const app = require('./app');
+require('dotenv').config();
+app.get("/",(req, res)=>{
+    res.send("Server running");
+})
 
-app.listen(5000, ()=> {
-    console.log('Hello World')
+app.listen(process.env.PORT, ()=> {
+    //console.log('Hello World')
 })
