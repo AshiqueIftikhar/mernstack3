@@ -1,5 +1,6 @@
 Deployed Version Link:
 
-Backend github Link:
+Backend github Link: https://github.com/AshiqueIftikhar/mernstack3/tree/main/Module%2018/full-stack-blog/backend
 
 Frontend Github Link:
+https://github.com/AshiqueIftikhar/mernstack3/tree/main/Module%2018/full-stack-blog/frontend
