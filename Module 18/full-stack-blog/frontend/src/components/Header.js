@@ -1,6 +1,4 @@
 import { NavLink } from "react-router-dom";
-import CreatePostPage from "../pages/CreatePostPage";
-import PostsListPage from "../pages/PostsListPage";
 
 function Header() {
   return (
@@ -24,11 +22,11 @@ function Header() {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <NavLink className="nav-link" to={'/'}> New Post</NavLink>
+                <NavLink className="nav-link" to={'/'}> Post List</NavLink>
                 
               </li>
               <li className="nav-item">
-              <NavLink className="nav-link" to={'/list'}> Post List</NavLink>
+              <NavLink className="nav-link" to={'/Create'}> New Post</NavLink>
               </li>
             </ul>
           </div>

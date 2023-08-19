@@ -1,46 +1,51 @@
-import {useEffect, useState} from "react";
-import axios from "axios";
-import {useNavigate,useParams} from "react-router-dom";
 
+import { useEffect, useState } from 'react';
+import axios  from 'axios';
+import { useNavigate, useParams } from 'react-router';
 
+function CreateUpdatePost(){
+  
+  let {id} = useParams();
+  const [formValue, setFormValue]=useState({"title":"", "content":"", "author":""});
+  let navigate = useNavigate();
 
-function CreateUpdatePost() {
+  useEffect(()=>{
+    axios.get("http://localhost:5000/api/v1/ReadPostById/"+id).then(res=>{
+      setFormValue(res.data['data'])
+      //console.log(res.data['data'][0])
+    }).catch(err=>{
+      console.log(err)
+    })
+  },[])
 
-let {id} = useParams();
-    let [FormValue,SetFormValue] = useState({title:"",content:"",author:""});
-    let navigate = useNavigate();
+  // useEffect(()=>{
+  //   (async()=>{
+  //     let res = await axios.get("http://localhost:5000/api/v1/ReadPostById/"+id);
+  //     setFormValue(res.data['data'])
+  //   })()
+  // },[])
 
-    let [isProduct,setIsProduct]=useState(false);
+  const onInput=(property, value)=>{
+  setFormValue({...formValue, [property]:value})
+  }
 
-    useEffect(()=>{
-
-        (async ()=>{
-           let res=await axios.get("https://crud.teamrabbil.com/api/v1/ReadProductByID/"+id);
-           SetFormValue(res.data['data'][0]);
-            setIsProduct(true);
-        })()
-
-    },[])
-
-
-    const InputOnChange = (property,value) => {
-        SetFormValue({...FormValue,[property]:value});
+  let BASEURL = "http://localhost:5000/api/v1/CreatePost"
+  if(id){
+      BASEURL = "http://localhost:5000/api/v1/UpdatePost/"+id
+  }
+  const onsubmit= async ()=>{
+    //alert(JSON.stringify(formValue));
+    let res = await axios.post(BASEURL,formValue)
+    if(res.status===200){
+      alert("Data inserted Successfully");
     }
-
-    const onSubmit = async () => {
-        let URL="https://crud.teamrabbil.com/api/v1/CreateProduct"
-        if(id){
-            URL="https://crud.teamrabbil.com/api/v1/UpdateProduct/"+id;
-        }
-       let res= await axios.post(URL, FormValue);
-       if(res.status===200){
-              alert("Save Changes");
-              navigate('/');
-       }
-    }
+    navigate("/")
+    //navigate(0);
+  }
 
   return (
-    <div className="container">
+    <>
+        <div className="container">
        <div className="mb-3">
         <label for="title" className="form-label">
           Title
@@ -50,6 +55,8 @@ let {id} = useParams();
           className="form-control"
           id="title"
           placeholder="Enter a Content Title"
+          value={formValue.title}
+          onChange={(e)=>{onInput("title",e.target.value)}}
         />
       </div>
       <div className="mb-3">
@@ -60,6 +67,8 @@ let {id} = useParams();
           className="form-control"
           id="content"
           rows="6"
+          value={formValue.content}
+          onChange={(e)=>{onInput("content",e.target.value)}}
         ></textarea>
       </div>
       <div className=" col-6 mb-3">
@@ -70,11 +79,23 @@ let {id} = useParams();
           type="text"
           className="form-control"
           id="author"
-          placeholder="Author an Author Name"
+          placeholder="Provide an Author Name"
+          value={formValue.author}
+          onChange={(e)=>{onInput("author",e.target.value)}}
         />
       </div>
     </div>
+    <div className='container mt-5'>
+      <div className='row'>
+      <div className='col-3'>
+      <button type='submit' className='btn btn-primary w-100' onClick={onsubmit}>Submit</button>
+      </div>
+      </div>
+    </div>
+    </>
+
   );
+
 }
 
 export default CreateUpdatePost;
