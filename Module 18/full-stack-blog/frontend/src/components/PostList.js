@@ -1,11 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function PostList() {
 
   const [ListPost, setListPost] = useState([]);
-
+  let navigate = useNavigate();
   useEffect(()=>{
     let BASEURL = "http://localhost:5000/api/v1/ReadPost"
     axios.get(BASEURL).then(res=>{
@@ -13,6 +13,13 @@ function PostList() {
       //console.log(ListPost)
     })
   },[])
+
+  const onDelete=(id)=>{
+    axios.post("http://localhost:5000/api/v1/DeletePost/"+id).then(
+      navigate(0)
+    )
+  }
+
   return (
     <div className="container">
       <table className="table align-middle mb-0 bg-white">
@@ -26,14 +33,14 @@ function PostList() {
           </tr>
         </thead>
         <tbody>
-        {ListPost.map((post)=>{
+        {ListPost.map((post, index)=>{
            return(  
-            <tr>
+            <tr key={index}>
             <td>{post.title}</td>
             <td>{post.content}</td>
             <td>{post.author}</td>
             <td><Link to={"/update/"+post._id} className="btn btn-primary">Edit</Link></td>
-            <td><button className="btn btn-danger">Delete</button></td>
+            <td><button className="btn btn-danger" onClick={()=>onDelete(post._id)}>Delete</button></td>
           </tr>
            )
             })}
