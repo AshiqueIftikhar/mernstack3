@@ -7,7 +7,7 @@ function PostList() {
   const [ListPost, setListPost] = useState([]);
   let navigate = useNavigate();
   useEffect(()=>{
-    let BASEURL = "http://localhost:5000/api/v1/ReadPost"
+    let BASEURL = "https://blog-express-k50e.onrender.com/api/v1/ReadPost"
     axios.get(BASEURL).then(res=>{
       setListPost(res.data['data']);
       //console.log(ListPost)
@@ -15,7 +15,7 @@ function PostList() {
   },[])
 
   const onDelete=(id)=>{
-    axios.post("http://localhost:5000/api/v1/DeletePost/"+id).then(
+    axios.post("https://blog-express-k50e.onrender.com/api/v1/DeletePost/"+id).then(
       navigate(0)
     )
   }

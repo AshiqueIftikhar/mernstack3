@@ -10,7 +10,7 @@ function CreateUpdatePost(){
   let navigate = useNavigate();
 
   useEffect(()=>{
-    axios.get("http://localhost:5000/api/v1/ReadPostById/"+id).then(res=>{
+    axios.get("https://blog-express-k50e.onrender.com/api/v1/ReadPostById/"+id).then(res=>{
       setFormValue(res.data['data'])
       //console.log(res.data['data'][0])
     }).catch(err=>{
@@ -29,9 +29,9 @@ function CreateUpdatePost(){
   setFormValue({...formValue, [property]:value})
   }
 
-  let BASEURL = "http://localhost:5000/api/v1/CreatePost"
+  let BASEURL = "https://blog-express-k50e.onrender.com/api/v1/CreatePost"
   if(id){
-      BASEURL = "http://localhost:5000/api/v1/UpdatePost/"+id
+      BASEURL = "https://blog-express-k50e.onrender.com/api/v1/UpdatePost/"+id
   }
   const onsubmit= async ()=>{
     //alert(JSON.stringify(formValue));
