@@ -1,4 +1,4 @@
-Deployed Version Link:
+Deployed Version Link: https://techromy.com/
 
 Backend github Link: https://github.com/AshiqueIftikhar/mernstack3/tree/main/Module%2018/full-stack-blog/backend
 
