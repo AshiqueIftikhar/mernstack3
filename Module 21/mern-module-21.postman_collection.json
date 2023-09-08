@@ -1,0 +1,151 @@
+{
+	"info": {
+		"_postman_id": "6ddfefbc-9ca9-4021-b54f-c50b4b1dc30e",
+		"name": "mern-module-21",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24987428"
+	},
+	"item": [
+		{
+			"name": "total-revenue",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASEURL}}/api/sales/total-revenue",
+					"host": [
+						"{{BASEURL}}"
+					],
+					"path": [
+						"api",
+						"sales",
+						"total-revenue"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "quantity-by-product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASEURL}}/api/sales/quantity-by-product",
+					"host": [
+						"{{BASEURL}}"
+					],
+					"path": [
+						"api",
+						"sales",
+						"quantity-by-product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "top-product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASEURL}}/api/sales/top-product",
+					"host": [
+						"{{BASEURL}}"
+					],
+					"path": [
+						"api",
+						"sales",
+						"top-product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "average-price",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASEURL}}/api/sales/average-price",
+					"host": [
+						"{{BASEURL}}"
+					],
+					"path": [
+						"api",
+						"sales",
+						"average-price"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "revenue-by-month",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASEURL}}/api/sales/revenue-by-month",
+					"host": [
+						"{{BASEURL}}"
+					],
+					"path": [
+						"api",
+						"sales",
+						"revenue-by-month"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "highest-quantity-sold",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASEURL}}/api/sales/highest-quantity-sold",
+					"host": [
+						"{{BASEURL}}"
+					],
+					"path": [
+						"api",
+						"sales",
+						"highest-quantity-sold"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BASEURL",
+			"value": "http://localhost:5000",
+			"type": "string"
+		}
+	]
+}
