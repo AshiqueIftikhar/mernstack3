@@ -26,15 +26,17 @@ app.use(mongoSanitize());
 app.use(bodyParser.json());
 app.use(cookieParser());
 
+// Rate Limit
+const limiter= rateLimit({windowMs:15*60*1000,max:3000})
+app.use(limiter)
+
 // Connect to MongoDB
-const mongoDB = process.env.MONGO_URI;
-mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
-mongoose.Promise = global.Promise;
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-db.once('open', () => {
-  console.log('Connected to MongoDB');
-});
+const URI =process.env.MONGO_URI;
+const OPTION = {user:process.env.MONGO_USER, pass:process.env.MONGO_PASS};
+mongoose.connect(URI, OPTION).then(error=>{
+       console.log("connected to database.")
+    })
+
 
 // Routes
 const router = require('./src/Routes/api');
